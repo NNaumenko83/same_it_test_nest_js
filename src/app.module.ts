@@ -8,13 +8,14 @@ import { SequelizeModule } from '@nestjs/sequelize';
   providers: [AppService],
   imports: [
     SequelizeModule.forRoot({
-      dialect: 'mysql',
+      dialect: 'postgres',
       host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'root',
-      database: 'test',
+      port: 5432,
+      username: 'postgres',
+      password: 'nnaumenko83',
+      database: 'test-same-it',
       models: [],
+      autoLoadModels: true,
     }),
   ],
 })
