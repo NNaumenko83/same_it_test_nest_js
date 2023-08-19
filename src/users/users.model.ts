@@ -1,8 +1,12 @@
 import { Column, Model, Table, DataType } from 'sequelize-typescript';
 
 interface UserCreationAttrs {
-  email: string;
-  username: string;
+  readonly email: string;
+  readonly username: string;
+  readonly firstName: string;
+  readonly lastName: string;
+  readonly role: string;
+  readonly state: string;
 }
 
 @Table({ tableName: 'users' })
