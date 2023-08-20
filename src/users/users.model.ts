@@ -1,12 +1,12 @@
 import { Column, Model, Table, DataType } from 'sequelize-typescript';
 
 interface UserCreationAttrs {
-  readonly email: string;
   readonly username: string;
-  readonly firstName: string;
-  readonly lastName: string;
+  readonly email: string;
+  // readonly firstName: string;
+  // readonly lastName: string;
   readonly role: string;
-  readonly state: string;
+  // readonly state: string;
 }
 
 @Table({ tableName: 'users' })
@@ -26,17 +26,17 @@ export class User extends Model<User, UserCreationAttrs> {
   })
   username: string;
 
-  @Column({
-    type: DataType.STRING,
-    allowNull: false,
-  })
-  firstName: string;
+  // @Column({
+  //   type: DataType.STRING,
+  //   allowNull: false,
+  // })
+  // firstName: string;
 
-  @Column({
-    type: DataType.STRING,
-    allowNull: false,
-  })
-  lastName: string;
+  // @Column({
+  //   type: DataType.STRING,
+  //   allowNull: false,
+  // })
+  // lastName: string;
 
   @Column({
     type: DataType.STRING,
@@ -51,9 +51,9 @@ export class User extends Model<User, UserCreationAttrs> {
   })
   role: string;
 
-  @Column({
-    type: DataType.STRING,
-    allowNull: false,
-  })
-  state: string;
+  // @Column({
+  //   type: DataType.STRING,
+  //   allowNull: false,
+  // })
+  // state: string;
 }
