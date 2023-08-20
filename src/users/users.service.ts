@@ -36,13 +36,20 @@ export class UsersService {
     return user;
   }
 
-  async getAllUsers() {
+  async getAllUsers(role?: string) {
+    const whereCondition: any = {};
+
+    if (role) {
+      whereCondition.role = role;
+    }
+
     const users = await this.userRepository.findAll({
       include: [
         {
           model: Profile,
         },
       ],
+      where: whereCondition,
     });
     return users;
   }
