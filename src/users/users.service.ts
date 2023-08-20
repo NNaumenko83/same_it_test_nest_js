@@ -25,10 +25,13 @@ export class UsersService {
       firstName,
       lastName,
       state,
-      userId: user.id,
     });
 
     user.profile = profile;
+
+    await user.update({
+      profileId: profile.id,
+    });
 
     return user;
   }

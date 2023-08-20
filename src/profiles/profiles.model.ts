@@ -52,8 +52,9 @@ import {
   Model,
   Table,
   DataType,
-  ForeignKey,
-  BelongsTo,
+  // ForeignKey,
+  HasOne,
+  // BelongsTo,
 } from 'sequelize-typescript';
 import { User } from 'src/users/users.model';
 
@@ -61,7 +62,6 @@ interface ProfileCreationAttrs {
   // readonly firstName: string;
   // readonly lastName: string;
   // readonly state: string;
-  // readonly userId?: number;
 }
 
 @Table({ tableName: 'profiles' })
@@ -92,10 +92,10 @@ export class Profile extends Model<Profile, ProfileCreationAttrs> {
   })
   state: string;
 
-  @ForeignKey(() => User)
-  @Column
-  userId: number;
+  // @ForeignKey(() => User)
+  // @Column
+  // userId: number;
 
-  @BelongsTo(() => User)
+  @HasOne(() => User, 'profileId')
   user: User;
 }

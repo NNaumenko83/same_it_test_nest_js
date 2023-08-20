@@ -56,7 +56,14 @@
 //   profile: Profile;
 // }
 
-import { Column, Model, Table, DataType, HasOne } from 'sequelize-typescript';
+import {
+  Column,
+  Model,
+  Table,
+  DataType,
+  BelongsTo,
+  ForeignKey,
+} from 'sequelize-typescript';
 import { Profile } from 'src/profiles/profiles.model';
 
 interface UserCreationAttrs {
@@ -94,6 +101,9 @@ export class User extends Model<User, UserCreationAttrs> {
   })
   role: string;
 
-  @HasOne(() => Profile)
+  @ForeignKey(() => Profile)
+  profileId: number;
+
+  @BelongsTo(() => Profile, 'id')
   profile: Profile;
 }
