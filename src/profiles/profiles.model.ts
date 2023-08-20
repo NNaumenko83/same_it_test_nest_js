@@ -58,10 +58,10 @@ import {
 import { User } from 'src/users/users.model';
 
 interface ProfileCreationAttrs {
-  readonly firstName: string;
-  readonly lastName: string;
-  readonly state: string;
-  readonly userId?: number;
+  // readonly firstName: string;
+  // readonly lastName: string;
+  // readonly state: string;
+  // readonly userId?: number;
 }
 
 @Table({ tableName: 'profiles' })

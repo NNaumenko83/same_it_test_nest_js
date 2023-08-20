@@ -9,7 +9,7 @@ import { Profile } from 'src/profiles/profiles.model';
 export class UsersService {
   constructor(
     @InjectModel(User) private userRepository: typeof User,
-    private profileRepository: typeof Profile,
+    @InjectModel(Profile) private profileRepository: typeof Profile,
   ) {}
 
   async createUser(createUserDto: CreateUserDto) {
