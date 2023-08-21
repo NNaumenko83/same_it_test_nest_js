@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { User } from './users.model';
 
@@ -52,5 +52,18 @@ export class UsersService {
       where: whereCondition,
     });
     return users;
+  }
+
+  async updateUser(id: number, fields) {
+    const user = await this.userRepository.findByPk(id, { include: [Profile] });
+
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    await user.update(fields);
+    await user.profile.update(fields);
+
+    return user;
   }
 }
