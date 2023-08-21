@@ -53,6 +53,6 @@ export class User extends Model<User, UserCreationAttrs> {
   @ForeignKey(() => Profile)
   profileId: number;
 
-  @BelongsTo(() => Profile)
+  @BelongsTo(() => Profile, { onDelete: 'CASCADE' })
   profile: Profile;
 }

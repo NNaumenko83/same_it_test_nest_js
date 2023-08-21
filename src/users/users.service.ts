@@ -68,4 +68,20 @@ export class UsersService {
 
     return user;
   }
+
+  async deleteUser(id: number): Promise<void> {
+    const user = await this.userRepository.findByPk(id, { include: [Profile] });
+
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    const profile = user.profile;
+
+    if (profile) {
+      await profile.destroy();
+    }
+
+    await user.destroy();
+  }
 }

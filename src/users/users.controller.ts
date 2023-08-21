@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Patch,
@@ -25,8 +26,13 @@ export class UsersController {
     return this.usersService.getAllUsers(role);
   }
 
-  @Patch(':id') // Вказуємо параметр :id для ідентифікації користувача
+  @Patch(':id')
   async updateUser(@Param('id') id: number, @Body() fields: UpdateUserFields) {
     return this.usersService.updateUser(id, fields);
+  }
+
+  @Delete(':id')
+  async deleteUser(@Param('id') id: number) {
+    return this.usersService.deleteUser(id);
   }
 }
