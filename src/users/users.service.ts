@@ -5,6 +5,8 @@ import { User } from './users.model';
 import { CreateUserDto } from './dto/create-user.dto';
 import { Profile } from 'src/profiles/profiles.model';
 
+import { UpdateUserFields } from 'src/types/updateUserField';
+
 @Injectable()
 export class UsersService {
   constructor(
@@ -54,7 +56,7 @@ export class UsersService {
     return users;
   }
 
-  async updateUser(id: number, fields) {
+  async updateUser(id: number, fields: UpdateUserFields) {
     const user = await this.userRepository.findByPk(id, { include: [Profile] });
 
     if (!user) {

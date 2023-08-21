@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UsersService } from './users.service';
+import { UpdateUserFields } from 'src/types/updateUserField';
 
 @Controller('users')
 export class UsersController {
@@ -25,7 +26,7 @@ export class UsersController {
   }
 
   @Patch(':id') // Вказуємо параметр :id для ідентифікації користувача
-  async updateUser(@Param('id') id: number, @Body() fields) {
+  async updateUser(@Param('id') id: number, @Body() fields: UpdateUserFields) {
     return this.usersService.updateUser(id, fields);
   }
 }
