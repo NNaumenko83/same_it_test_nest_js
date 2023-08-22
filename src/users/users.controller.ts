@@ -10,9 +10,10 @@ import {
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UsersService } from './users.service';
-import { UpdateUserFields } from 'src/types/updateUserField';
+
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { User } from './users.model';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @ApiTags('Користувачі')
 @Controller('users')
@@ -36,10 +37,12 @@ export class UsersController {
   @ApiOperation({ summary: 'Оновлення користувача' })
   @ApiResponse({ status: 200, type: [User] })
   @Patch(':id')
-  async updateUser(@Param('id') id: number, @Body() fields: UpdateUserFields) {
+  async updateUser(@Param('id') id: number, @Body() fields: UpdateUserDto) {
     return this.usersService.updateUser(id, fields);
   }
 
+  @ApiOperation({ summary: 'Видалення користувача' })
+  @ApiResponse({ status: 200 })
   @Delete(':id')
   async deleteUser(@Param('id') id: number) {
     return this.usersService.deleteUser(id);

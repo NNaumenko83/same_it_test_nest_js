@@ -1,18 +1,10 @@
-import {
-  Column,
-  Model,
-  Table,
-  DataType,
-  // ForeignKey,
-  HasOne,
-  // BelongsTo,
-} from 'sequelize-typescript';
+import { Column, Model, Table, DataType, HasOne } from 'sequelize-typescript';
 import { User } from 'src/users/users.model';
 
 interface ProfileCreationAttrs {
-  // readonly firstName: string;
-  // readonly lastName: string;
-  // readonly state: string;
+  readonly firstName: string;
+  readonly lastName: string;
+  readonly state: string;
 }
 
 @Table({ tableName: 'profiles', createdAt: false, updatedAt: false })
