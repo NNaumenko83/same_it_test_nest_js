@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import {
   Column,
   Model,
@@ -15,6 +16,7 @@ interface UserCreationAttrs {
 }
 @Table({ tableName: 'users', createdAt: false, updatedAt: false })
 export class User extends Model<User, UserCreationAttrs> {
+  @ApiProperty({ example: '1', description: 'Унікальний ідентифікатор' })
   @Column({
     type: DataType.INTEGER,
     unique: true,
@@ -23,6 +25,7 @@ export class User extends Model<User, UserCreationAttrs> {
   })
   id: number;
 
+  @ApiProperty({ example: 'nnv2006', description: "Ім'я користувача" })
   @Column({
     type: DataType.STRING,
     unique: true,
@@ -30,6 +33,10 @@ export class User extends Model<User, UserCreationAttrs> {
   })
   username: string;
 
+  @ApiProperty({
+    example: 'example@example.com',
+    description: 'Електронна пошта',
+  })
   @Column({
     type: DataType.STRING,
     unique: true,
@@ -37,12 +44,17 @@ export class User extends Model<User, UserCreationAttrs> {
   })
   email: string;
 
+  @ApiProperty({ example: 'user', description: 'Роль користувача' })
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
   role: string;
 
+  @ApiProperty({
+    example: '2023-08-22T12:34:56Z',
+    description: 'Дата створення',
+  })
   @Column({
     type: DataType.DATE,
     allowNull: false,
